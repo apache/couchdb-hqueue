@@ -12,6 +12,7 @@
 
 -module(hqueue_proper).
 
+-ifdef(WITH_PROPER).
 -include_lib("proper/include/proper.hrl").
 -include_lib("eunit/include/eunit.hrl").
 
@@ -31,3 +32,4 @@ prop_simple() ->
 simple_test_() ->
     ?_assertEqual(true, ?QC(prop_simple())).
 
+-endif.

@@ -12,6 +12,7 @@
 
 -module(hqueue_statem).
 
+-ifdef(WITH_PROPER).
 -include_lib("proper/include/proper.hrl").
 -include_lib("eunit/include/eunit.hrl").
 
@@ -113,3 +114,4 @@ postcondition(#state{queue=Q}, {call, _, is_empty, [_]}, Result) ->
 postcondition(_S, {call, _, max_elems, [_]}, Result) ->
     0 < Result.
 
+-endif.
