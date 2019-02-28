@@ -1,0 +1,20 @@
+WithProper = code:lib_dir(proper) /= {error, bad_name}.
+
+ErlOpts =
+    [debug_info] ++
+    case WithProper of
+        true ->
+            [{d, 'WITH_PROPER'}];
+        false ->
+            []
+    end,
+
+[{port_specs, [
+    {"priv/hqueue.so", ["c_src/hqueue*.c"]}
+]},
+{port_env, [
+    {".*", "CFLAGS", "$CFLAGS -g -Wall -Werror -DHQ_ENIF_ALLOC -O3"}
+    %% {".*", "CFLAGS", "$CFLAGS -g -Wall -Werror -Wextra"}
+]},
+{eunit_opts, [verbose]},
+{erl_opts, [{i, "../"} | ErlOpts]}].
