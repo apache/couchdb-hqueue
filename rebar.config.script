@@ -13,7 +13,8 @@ ErlOpts =
     {"priv/hqueue.so", ["c_src/hqueue*.c"]}
 ]},
 {port_env, [
-    {".*", "CFLAGS", "$CFLAGS -g -Wall -Werror -DHQ_ENIF_ALLOC -O3"}
+    {"(linux|solaris|darwin|freebsd)", "CFLAGS", "$CFLAGS -g -Wall -Werror -DHQ_ENIF_ALLOC -O3"},
+    {"win32", "CFLAGS", "$CFLAGS /O2 /DNDEBUG /DHQ_ENIF_ALLOC /Dinline=__inline /Wall"}
     %% {".*", "CFLAGS", "$CFLAGS -g -Wall -Werror -Wextra"}
 ]},
 {eunit_opts, [verbose]},
