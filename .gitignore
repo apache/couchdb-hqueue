@@ -1,8 +1,11 @@
 .hqueue.dev
+*.d
 *.o
 *.beam
 *.so
 .eunit
 erl_crash.dump
 rebar
+ebin
+compile_commands.json
 
