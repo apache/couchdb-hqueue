@@ -20,4 +20,14 @@ ErlOpts =
     %% {".*", "CFLAGS", "$CFLAGS -g -Wall -Werror -Wextra"}
 ]},
 {eunit_opts, [verbose]},
+{plugins, [{pc, "~> 1.0"}]},
+{artifacts, [
+    "priv/hqueue.so"
+]},
+{provider_hooks, [
+    {post, [
+        {compile, {pc, compile}},
+        {clean, {pc, clean}}
+    ]}
+]},
 {erl_opts, [{i, "../"} | ErlOpts]}].
